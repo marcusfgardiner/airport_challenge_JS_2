@@ -24,10 +24,10 @@ describe ('Airport', function() {
     });
 
     it('raises an error if hangar is full', function() {
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < airport.capacity; i++) {
         airport.land('plane')
       };
-      console.log(airport)
+
       expect(function() {
         airport.land('plane');
       }).toThrow('Too many planes!');
@@ -47,7 +47,9 @@ describe ('Airport', function() {
       expect(function() {
         stormy_airport.takeOff('plane');
       }).toThrow('It is stormy out there!');
-
     });
+
+    // test for taking off without planes in hangar
+    // test for taking off specific plane
   });
 });
