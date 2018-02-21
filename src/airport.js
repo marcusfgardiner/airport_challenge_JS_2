@@ -13,8 +13,9 @@ Airport.prototype.land = function(plane) {
 };
 
 Airport.prototype.takeOff = function(plane) {
-    this._stormyError();
-    return this.hangar.pop(plane);
+  this._planeNotInHangarError(plane);
+  this._stormyError();
+  return this.hangar.pop(plane);
 };
 
 Airport.prototype._stormyError = function () {
@@ -23,4 +24,8 @@ Airport.prototype._stormyError = function () {
 
 Airport.prototype._fullError = function () {
   if (this.hangar.length >= this.capacity) throw 'Too many planes!';
+};
+
+Airport.prototype._planeNotInHangarError = function (plane) {
+  if (!this.hangar.includes(plane)) throw 'Plane not in hangar!';
 };

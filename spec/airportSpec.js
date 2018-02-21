@@ -25,8 +25,8 @@ describe ('Airport', function() {
 
     it('raises an error if hangar is full', function() {
       for (var i = 0; i < airport.capacity; i++) {
-        airport.land('plane')
-      };
+        airport.land('plane');
+      }
 
       expect(function() {
         airport.land('plane');
@@ -49,7 +49,24 @@ describe ('Airport', function() {
       }).toThrow('It is stormy out there!');
     });
 
+    it("raises an error if a specific plane isn't in the hangar", function() {
+      for (var i = 0; i < 5; i++) {
+        airport.land('plane');
+      }
+      var plane = {};
+      expect( function() {airport.takeOff(plane);}).toThrow('Plane not in hangar!');
+    });
+    //
+    // it('raises an error if plane is already in the air', function() {
+    //   // var plane = {};
+    //   airport.hangar = [];
+    //   expect( function() {airport.takeOff('plane');}).toThrow('');
+    // });
+
+    // planes that are already flying cannot takes off and/or be in an airport
+    // planes that are landed cannot land again and must be in an airport, etc.
     // test for taking off without planes in hangar
     // test for taking off specific plane
+    // ensuring that planes can only take off from airports they are in
   });
 });
