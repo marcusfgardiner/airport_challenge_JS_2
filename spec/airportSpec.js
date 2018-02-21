@@ -13,6 +13,10 @@ describe ('Airport', function() {
       expect(airport.hangar).toContain('plane');
     });
 
+    it('raises an error if its stormy', function() {
+      expect( function(){ airport.land('plane') ;}).toThrow('It is stormy out there!');
+    });
+
   });
 
   describe('taking off plane', function() {
