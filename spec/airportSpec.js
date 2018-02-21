@@ -14,7 +14,9 @@ describe ('Airport', function() {
     });
 
     it('raises an error if its stormy', function() {
-      expect( function(){ airport.land('plane') ;}).toThrow('It is stormy out there!');
+      // spyOn(Weather, 'isStormy').and.returnValue(true);
+      spyOn(Math, 'random').and.returnValue(true);
+      expect( function() { airport.land('plane'); }).toThrow('It is stormy out there!');
     });
 
   });
