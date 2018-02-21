@@ -22,6 +22,16 @@ describe ('Airport', function() {
         stormy_airport.land('plane');
       }).toThrow('It is stormy out there!');
     });
+
+    it('raises an error if hangar is full', function() {
+      for (var i = 0; i < 20; i++) {
+        airport.land('plane')
+      };
+      console.log(airport)
+      expect(function() {
+        airport.land('plane');
+      }).toThrow('Too many planes!');
+    });
   });
 
   describe('taking off plane', function() {
@@ -35,7 +45,7 @@ describe ('Airport', function() {
     it('raises an error if its stormy', function() {
       stormy_airport.hangar = ['plane'];
       expect(function() {
-      stormy_airport.takeOff('plane');
+        stormy_airport.takeOff('plane');
       }).toThrow('It is stormy out there!');
 
     });

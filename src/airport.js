@@ -6,7 +6,10 @@ var Airport = function() {
 };
 
 Airport.prototype.land = function(plane) {
-  if (this.weather.isStormy()) {
+  if (this.hangar.length >= 20) {
+    throw 'Too many planes!'
+  }
+  else if (this.weather.isStormy()) {
     throw 'It is stormy out there!';
   }
   else {
