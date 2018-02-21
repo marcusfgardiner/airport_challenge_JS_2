@@ -1,8 +1,13 @@
-function Airport() {
-  array = []
+// debugger;
+
+var Airport = function() {
+  this.hangar = [];
 };
 
-Airport.prototype.landPlane = function(plane) {
-  array.push(plane);
-  return array;
+Airport.prototype.land = function(plane) {
+  return this.hangar.push(plane);
+};
+
+Airport.prototype.takeOff = function(plane) {
+  return this.hangar.pop(plane);
 };

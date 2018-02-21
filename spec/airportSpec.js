@@ -2,19 +2,26 @@ describe ('Airport', function() {
 
   var airport;
 
-});
-
-describe('landing a plane', function() {
-
-  // it('lands a plane', function() {
-  //   airport = new Airport();
-  //   expect(airport.landPlane()).toBe(true);
-  // });
-
-  it('stores a plane in an array', function() {
+  beforeEach(function() {
     airport = new Airport();
-    expect(airport.landPlane('plane')).toContain('plane')
+    airport.land('plane');
   });
 
+  describe('landing a plane', function() {
+
+    it('stores a plane in hangar array', function() {
+      expect(airport.hangar).toContain('plane');
+    });
+
+  });
+
+  describe('taking off plane', function() {
+
+    it('removes plane from hangar array', function() {
+      airport.takeOff('plane');
+      expect(airport.hangar).not.toContain('plane');
+    });
+
+  });
 
 });
