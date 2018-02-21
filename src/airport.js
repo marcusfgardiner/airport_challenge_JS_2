@@ -15,7 +15,7 @@ Airport.prototype.land = function(plane) {
 Airport.prototype.takeOff = function(plane) {
   this._planeNotInHangarError(plane);
   this._stormyError();
-  return this.hangar.pop(plane);
+  return this._deleteAt(plane);
 };
 
 Airport.prototype._stormyError = function () {
@@ -28,4 +28,9 @@ Airport.prototype._fullError = function () {
 
 Airport.prototype._planeNotInHangarError = function (plane) {
   if (!this.hangar.includes(plane)) throw 'Plane not in hangar!';
+};
+
+Airport.prototype._deleteAt = function (plane) {
+ var index = this.hangar.indexOf(plane);
+ this.hangar.splice(index, 1);
 };

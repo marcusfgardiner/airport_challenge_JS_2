@@ -54,13 +54,25 @@ describe ('Airport', function() {
         airport.land('plane');
       }
       var plane = {};
-      expect( function() {airport.takeOff(plane);}).toThrow('Plane not in hangar!');
+      expect( function() {
+        airport.takeOff(plane);
+      }).toThrow('Plane not in hangar!');
     });
-    //
+
+    it('is able to take off specific plane', function() {
+      var plane = {};
+      airport.hangar = [plane, 'plane', 'plane'];
+      airport.takeOff(plane)
+      expect(airport.hangar).not.toContain(plane);
+    });
+
     // it('raises an error if plane is already in the air', function() {
-    //   // var plane = {};
-    //   airport.hangar = [];
-    //   expect( function() {airport.takeOff('plane');}).toThrow('');
+    //   var plane = {};
+    //   airport.hangar = [plane];
+    //   airport.takeOff(plane);
+    //   expect( function() {
+    //     airport.takeOff(plane);
+    //   }).toThrow('That plane is in the air');
     // });
 
     // planes that are already flying cannot takes off and/or be in an airport
