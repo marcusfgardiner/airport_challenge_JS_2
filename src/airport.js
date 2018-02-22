@@ -10,7 +10,8 @@ Airport.prototype.land = function(plane) {
   if (!plane._isFlying) throw 'This plane is already at an airport';
   this._fullError();
   this._stormyError();
-  plane.changeFlyingStatus();
+  console.log(plane)
+  // plane.changeFlyingStatus();
   return this.hangar.push(plane);
 };
 

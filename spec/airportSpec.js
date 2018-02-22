@@ -2,8 +2,8 @@ describe ('Airport', function() {
 
   var airport;
   var stormy_airport;
-  var planeFlying
-  var planeLanded
+  var planeFlying;
+  var planeLanded;
 
   beforeEach(function() {
     airport = new Airport();
