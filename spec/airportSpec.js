@@ -17,6 +17,13 @@ describe ('Airport', function() {
       expect(airport.hangar).toContain('plane');
     });
 
+    it('cannot land a plane that is already in the hangar', function(){
+      var plane = {_isFlying: false};
+      expect( function() {
+        airport.land(plane);
+      }).toThrow('This plane is already at an airport');
+    });
+
     it('raises an error if its stormy', function() {
       expect(function() {
         stormy_airport.land('plane');
@@ -62,23 +69,9 @@ describe ('Airport', function() {
     it('is able to take off specific plane', function() {
       var plane = {};
       airport.hangar = [plane, 'plane', 'plane'];
-      airport.takeOff(plane)
+      airport.takeOff(plane);
       expect(airport.hangar).not.toContain(plane);
     });
 
-    // it('raises an error if plane is already in the air', function() {
-    //   var plane = {};
-    //   airport.hangar = [plane];
-    //   airport.takeOff(plane);
-    //   expect( function() {
-    //     airport.takeOff(plane);
-    //   }).toThrow('That plane is in the air');
-    // });
-
-    // planes that are already flying cannot takes off and/or be in an airport
-    // planes that are landed cannot land again and must be in an airport, etc.
-    // test for taking off without planes in hangar
-    // test for taking off specific plane
-    // ensuring that planes can only take off from airports they are in
   });
 });

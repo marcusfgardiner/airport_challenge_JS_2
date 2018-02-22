@@ -7,9 +7,11 @@ var Airport = function(capacity) {
 };
 
 Airport.prototype.land = function(plane) {
+  if (!plane._isFlying) throw 'This plane is already at an airport';
   this._fullError();
   this._stormyError();
-    return this.hangar.push(plane);
+  plane.changeFlyingStatus();
+  return this.hangar.push(plane);
 };
 
 Airport.prototype.takeOff = function(plane) {
