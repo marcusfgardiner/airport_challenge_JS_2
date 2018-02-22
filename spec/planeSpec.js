@@ -4,7 +4,7 @@ describe('Plane', function() {
   describe('plane status', function() {
     it('defaults to being a flying plane on creation', function() {
       plane = new Plane();
-      expect(plane.isFlying).toBeTrue();
+      expect(plane.isFlying).toBeTruthy();
     });
 
     it('changes plane status from flying to landed', function() {
