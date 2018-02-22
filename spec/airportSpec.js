@@ -21,10 +21,12 @@ describe ('Airport', function() {
   describe('landing a plane', function() {
 
     it('stores a plane in hangar array', function() {
-      var Plane_mock = function() {
-        this._isFlying = true;
+      var plane = function() {
+        this.isFlying = true;
       };
-      var plane = new Plane_mock();
+
+      plane.prototype.changeFlyingStatus = function() {  this.isFlying = !this.isFlying;};
+      // var plane = new Plane_mock();
 
       spyOn(plane, 'changeFlyingStatus').and.returnValue(false);
       // console.log(plane);
